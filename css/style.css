@@ -91,6 +91,7 @@ body {
     margin-bottom: 1rem;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -227,6 +228,16 @@ body {
 
 .submit-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Success Message */
+.success-message {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-align: center;
 }
 
 /* Footer */
