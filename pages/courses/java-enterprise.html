@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Enterprise Development - COURSEME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/course.css">
+</head>
+<body class="course-page">
+    <nav class="course-nav">
+        <div class="nav-left">
+            <a href="../dashboard.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+            <h1 class="course-title">Java Enterprise Development</h1>
+        </div>
+        <div class="nav-right">
+            <button onclick="logout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <div class="course-info">
+                <div class="course-stats">
+                    <div class="stat-item">
+                        <i class="far fa-clock"></i>
+                        <span>18 hours</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="far fa-list-alt"></i>
+                        <span>36 lessons</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-tag"></i>
+                        <span>Enterprise</span>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <h3>Course Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% Complete</span>
+                </div>
+            </div>
+            <div class="lessons-list">
+                <h3>Course Content</h3>
+                <div class="lesson-item">
+                    <span class="lesson-number">1</span>
+                    <span class="lesson-title">Spring Framework Basics</span>
+                    <span class="lesson-duration">2 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">2</span>
+                    <span class="lesson-title">Enterprise Design Patterns</span>
+                    <span class="lesson-duration">2 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">3</span>
+                    <span class="lesson-title">Microservices Architecture</span>
+                    <span class="lesson-duration">2 hours</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="course-content">
+            <div class="content-section">
+                <h2>Course Overview</h2>
+                <p>Master enterprise Java development with Spring Framework, microservices, and modern architectural patterns. Learn to build scalable, maintainable enterprise applications using industry-standard tools and practices.</p>
+                
+                <h3>What You'll Learn</h3>
+                <ul class="learning-objectives">
+                    <li>Spring Framework and Spring Boot</li>
+                    <li>Enterprise design patterns</li>
+                    <li>Microservices architecture</li>
+                    <li>RESTful web services</li>
+                    <li>Enterprise security patterns</li>
+                    <li>Cloud deployment strategies</li>
+                </ul>
+
+                <h3>Prerequisites</h3>
+                <ul class="prerequisites">
+                    <li>Strong Java programming skills</li>
+                    <li>Basic understanding of web services</li>
+                    <li>Knowledge of SQL and databases</li>
+                </ul>
+
+                <div class="cta-section">
+                    <button class="start-learning-btn">Start Learning</button>
+                    <button class="download-resources-btn">
+                        <i class="fas fa-download"></i>
+                        Download Resources
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Course Structure</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 1-2</h4>
+                            <p>Spring Framework and enterprise patterns</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 3-4</h4>
+                            <p>Microservices and distributed systems</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 5-6</h4>
+                            <p>Security, deployment, and best practices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/auth.js"></script>
+    <script>
+        checkAuth();
+        
+        document.querySelector('.start-learning-btn').addEventListener('click', () => {
+            alert('Starting first lesson...');
+        });
+    </script>
+</body>
+</html>

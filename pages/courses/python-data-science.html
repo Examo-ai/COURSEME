@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Data Science - COURSEME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/course.css">
+</head>
+<body class="course-page">
+    <nav class="course-nav">
+        <div class="nav-left">
+            <a href="../dashboard.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+            <h1 class="course-title">Python Data Science</h1>
+        </div>
+        <div class="nav-right">
+            <button onclick="logout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <div class="course-info">
+                <div class="course-stats">
+                    <div class="stat-item">
+                        <i class="far fa-clock"></i>
+                        <span>20 hours</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="far fa-list-alt"></i>
+                        <span>35 lessons</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-tag"></i>
+                        <span>Data Science</span>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <h3>Course Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% Complete</span>
+                </div>
+            </div>
+            <div class="lessons-list">
+                <h3>Course Content</h3>
+                <div class="lesson-item">
+                    <span class="lesson-number">1</span>
+                    <span class="lesson-title">NumPy Fundamentals</span>
+                    <span class="lesson-duration">3 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">2</span>
+                    <span class="lesson-title">Pandas & Data Analysis</span>
+                    <span class="lesson-duration">4 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">3</span>
+                    <span class="lesson-title">Data Visualization</span>
+                    <span class="lesson-duration">4 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">4</span>
+                    <span class="lesson-title">Machine Learning Basics</span>
+                    <span class="lesson-duration">5 hours</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="course-content">
+            <div class="content-section">
+                <h2>Course Overview</h2>
+                <p>Dive into the world of data science with Python. Learn essential libraries like NumPy, Pandas, and Matplotlib, and discover how to analyze and visualize data effectively. Get started with machine learning using scikit-learn.</p>
+                
+                <h3>What You'll Learn</h3>
+                <ul class="learning-objectives">
+                    <li>Data manipulation with NumPy and Pandas</li>
+                    <li>Data visualization with Matplotlib and Seaborn</li>
+                    <li>Statistical analysis techniques</li>
+                    <li>Machine learning fundamentals</li>
+                    <li>Data cleaning and preprocessing</li>
+                    <li>Real-world data science projects</li>
+                </ul>
+
+                <h3>Prerequisites</h3>
+                <ul class="prerequisites">
+                    <li>Basic Python programming knowledge</li>
+                    <li>Understanding of basic mathematics</li>
+                    <li>Familiarity with data concepts</li>
+                </ul>
+
+                <div class="cta-section">
+                    <button class="start-learning-btn">Start Learning</button>
+                    <button class="download-resources-btn">
+                        <i class="fas fa-download"></i>
+                        Download Resources
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Course Structure</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 1-2</h4>
+                            <p>NumPy and Pandas fundamentals</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 3-4</h4>
+                            <p>Data visualization and analysis</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 5-6</h4>
+                            <p>Machine learning and projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/auth.js"></script>
+    <script>
+        checkAuth();
+        
+        document.querySelector('.start-learning-btn').addEventListener('click', () => {
+            alert('Starting first lesson...');
+        });
+    </script>
+</body>
+</html>

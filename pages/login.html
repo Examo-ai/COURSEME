@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - COURSEME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <div class="login-card">
+            <div class="login-header">
+                <h2>Welcome Back</h2>
+                <p>Enter your access code to continue</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="access-code">Access Code</label>
+                    <input type="password" id="access-code" required placeholder="Enter your 8-digit access code">
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="login-footer">
+                <p>Don't have an access code? <a href="../index.html#request-access">Request Access</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

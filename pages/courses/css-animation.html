@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation - COURSEME</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/course.css">
+</head>
+<body class="course-page">
+    <nav class="course-nav">
+        <div class="nav-left">
+            <a href="../dashboard.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+            <h1 class="course-title">CSS Animation</h1>
+        </div>
+        <div class="nav-right">
+            <button onclick="logout()" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="course-container">
+        <aside class="course-sidebar">
+            <div class="course-info">
+                <div class="course-stats">
+                    <div class="stat-item">
+                        <i class="far fa-clock"></i>
+                        <span>10 hours</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="far fa-list-alt"></i>
+                        <span>20 lessons</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-tag"></i>
+                        <span>CSS</span>
+                    </div>
+                </div>
+                <div class="progress-section">
+                    <h3>Course Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% Complete</span>
+                </div>
+            </div>
+            <div class="lessons-list">
+                <h3>Course Content</h3>
+                <div class="lesson-item">
+                    <span class="lesson-number">1</span>
+                    <span class="lesson-title">CSS Transitions</span>
+                    <span class="lesson-duration">1.5 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">2</span>
+                    <span class="lesson-title">Keyframe Animations</span>
+                    <span class="lesson-duration">2 hours</span>
+                </div>
+                <div class="lesson-item">
+                    <span class="lesson-number">3</span>
+                    <span class="lesson-title">Advanced Effects</span>
+                    <span class="lesson-duration">2 hours</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="course-content">
+            <div class="content-section">
+                <h2>Course Overview</h2>
+                <p>Master the art of creating engaging web animations using pure CSS. Learn to create smooth transitions, complex animations, and interactive effects that will bring your websites to life.</p>
+                
+                <h3>What You'll Learn</h3>
+                <ul class="learning-objectives">
+                    <li>CSS transitions and timing functions</li>
+                    <li>Keyframe animations</li>
+                    <li>Transform and translate properties</li>
+                    <li>3D animations and perspective</li>
+                    <li>Performance optimization</li>
+                    <li>Animation best practices</li>
+                </ul>
+
+                <h3>Prerequisites</h3>
+                <ul class="prerequisites">
+                    <li>Basic CSS knowledge</li>
+                    <li>Understanding of selectors</li>
+                    <li>HTML fundamentals</li>
+                </ul>
+
+                <div class="cta-section">
+                    <button class="start-learning-btn">Start Learning</button>
+                    <button class="download-resources-btn">
+                        <i class="fas fa-download"></i>
+                        Download Resources
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Course Structure</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 1</h4>
+                            <p>CSS transitions and basics</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 2</h4>
+                            <p>Advanced animations and effects</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4>Week 3</h4>
+                            <p>Real-world projects and optimization</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../../js/auth.js"></script>
+    <script>
+        checkAuth();
+        
+        document.querySelector('.start-learning-btn').addEventListener('click', () => {
+            alert('Starting first lesson...');
+        });
+    </script>
+</body>
+</html>

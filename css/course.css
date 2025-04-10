@@ -1,0 +1,327 @@
+.course-page {
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Navigation */
+.course-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+.course-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* Course Layout */
+.course-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 6rem 2rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Sidebar */
+.course-sidebar {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 5rem;
+}
+
+.course-info {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.stat-item i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.progress-section h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.lessons-list {
+    padding: 1.5rem;
+}
+
+.lessons-list h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.lesson-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.lesson-item:hover {
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.lesson-number {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: var(--primary-color);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.lesson-title {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.lesson-duration {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Main Content */
+.course-content {
+    padding-bottom: 2rem;
+}
+
+.content-section {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.content-section h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+}
+
+.content-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.learning-objectives,
+.prerequisites {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+
+.learning-objectives li,
+.prerequisites li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.learning-objectives li::before,
+.prerequisites li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.cta-section {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.start-learning-btn,
+.download-resources-btn {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-learning-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.download-resources-btn {
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.start-learning-btn:hover,
+.download-resources-btn:hover {
+    transform: translateY(-2px);
+}
+
+.timeline {
+    margin-top: 2rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 2px solid white;
+}
+
+.timeline-content h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .course-container {
+        grid-template-columns: 250px 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-container {
+        grid-template-columns: 1fr;
+    }
+
+    .course-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .course-title {
+        font-size: 1.2rem;
+    }
+
+    .cta-section {
+        flex-direction: column;
+    }
+
+    .back-link span {
+        display: none;
+    }
+}
