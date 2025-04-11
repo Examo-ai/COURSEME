@@ -1,0 +1,238 @@
+/* German Course Specific Styles */
+@keyframes fadeInStagger {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatingBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.german-course {
+    background: linear-gradient(-45deg, #DE0000, #FF9B9B, #FFCD00, #000000);
+    background-size: 400% 400%;
+    animation: floatingBackground 15s ease infinite;
+    min-height: 100vh;
+    padding-top: 60px;
+}
+
+.german-header {
+    text-align: center;
+    color: white;
+    padding: 3rem 1rem;
+    animation: fadeInStagger 0.6s ease-out;
+}
+
+.german-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.german-header p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.german-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.german-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInStagger 0.6s ease-out backwards;
+}
+
+.german-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.german-section:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.german-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+.german-section h2 {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.german-section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #DE0000, #FFCD00);
+    border-radius: 2px;
+}
+
+.vocab-list, .grammar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vocab-item, .grammar-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vocab-item:hover, .grammar-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.vocab-item span:first-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.vocab-item span:last-child {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.practice-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, #DE0000, #FFCD00);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.practice-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #FFCD00, #DE0000);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.practice-btn:hover {
+    transform: translateY(-2px);
+}
+
+.practice-btn:hover::after {
+    opacity: 1;
+}
+
+.practice-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.progress-section {
+    margin-top: 2rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #DE0000, #FFCD00);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+    transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .german-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .german-container {
+        padding: 1rem;
+    }
+    
+    .german-section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .german-header h1 {
+        font-size: 2rem;
+    }
+    
+    .vocab-item, .grammar-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

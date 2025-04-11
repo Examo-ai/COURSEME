@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-logo">COURSEME</div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#features">Features</a>
@@ -20,50 +26,168 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1>Welcome to COURSEME</h1>
-            <p class="subtitle">Discover AI-Powered Learning Experience</p>
+        <div class="hero-content" data-aos="fade-right">
+            <h1>Transform Your Learning Journey</h1>
+            <p class="subtitle">Experience the future of education with AI-powered personalized courses</p>
             <div class="hero-buttons">
                 <a href="#request-access" class="cta-button">Get Started</a>
                 <a href="#learn-more" class="secondary-button">Learn More</a>
             </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Active Learners</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">AI Courses</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
         </div>
-        <div class="hero-image">
+        <div class="hero-image" data-aos="fade-left">
             <div class="abstract-shape"></div>
+            <div class="floating-cards">
+                <div class="course-preview-card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h4>Web Development</h4>
+                    <div class="card-progress"></div>
+                </div>
+                <div class="course-preview-card">
+                    <div class="card-icon"><i class="fas fa-language"></i></div>
+                    <h4>Language Learning</h4>
+                    <div class="card-progress"></div>
+                </div>
+            </div>
         </div>
     </header>
 
     <section id="about" class="about-section">
-        <h2>Revolutionizing Online Learning</h2>
+        <h2 data-aos="fade-up">Why Choose COURSEME?</h2>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-robot"></i>
                 <h3>AI-Generated Content</h3>
-                <p>Cutting-edge courses created by advanced AI technology</p>
+                <p>Personalized learning paths created by advanced AI to match your pace and style</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fas fa-code"></i>
                 <h3>Programming</h3>
-                <p>Learn various programming languages and web development</p>
+                <p>Master in-demand programming skills with hands-on projects and real-world applications</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-language"></i>
                 <h3>Language Courses</h3>
-                <p>Master new languages with interactive lessons</p>
+                <p>Learn new languages naturally with AI-powered conversation practice and cultural insights</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-chart-line"></i>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your learning journey with detailed analytics and performance insights</p>
             </div>
         </div>
     </section>
 
-    <section id="request-access" class="request-section">
-        <h2>Request Access</h2>
+    <section id="how-it-works" class="how-it-works-section">
+        <h2 data-aos="fade-up">How It Works</h2>
+        <div class="steps-container">
+            <div class="step" data-aos="fade-right">
+                <div class="step-number">1</div>
+                <h3>Sign Up</h3>
+                <p>Create your account and tell us about your learning goals</p>
+            </div>
+            <div class="step" data-aos="fade-right" data-aos-delay="100">
+                <div class="step-number">2</div>
+                <h3>Get Matched</h3>
+                <p>Our AI analyzes your needs and creates a personalized learning path</p>
+            </div>
+            <div class="step" data-aos="fade-right" data-aos-delay="200">
+                <div class="step-number">3</div>
+                <h3>Start Learning</h3>
+                <p>Begin your journey with interactive lessons and real-time feedback</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses-preview" class="courses-preview-section">
+        <h2 data-aos="fade-up">Featured Courses</h2>
+        <div class="courses-slider">
+            <div class="course-card" data-aos="fade-up">
+                <div class="course-icon"><i class="fab fa-js"></i></div>
+                <h3>Advanced JavaScript</h3>
+                <p>Master modern JavaScript features and frameworks</p>
+                <div class="course-tags">
+                    <span>Programming</span>
+                    <span>Web Dev</span>
+                </div>
+            </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="course-icon"><i class="fas fa-globe-europe"></i></div>
+                <h3>German Language</h3>
+                <p>Learn German from basics to fluency</p>
+                <div class="course-tags">
+                    <span>Language</span>
+                    <span>Beginner</span>
+                </div>
+            </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="course-icon"><i class="fab fa-python"></i></div>
+                <h3>Python Data Science</h3>
+                <p>Analyze data and build ML models</p>
+                <div class="course-tags">
+                    <span>Data Science</span>
+                    <span>Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <h2 data-aos="fade-up">What Our Students Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <div class="testimonial-content">
+                    <p>"The AI-powered learning experience is revolutionary. I learned German faster than I ever expected!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="images/testimonial1.jpg" alt="Sarah M.">
+                    <div>
+                        <h4>Sarah M.</h4>
+                        <p>Language Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-content">
+                    <p>"The programming courses are incredibly well-structured. The hands-on projects really helped me learn."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="images/testimonial2.jpg" alt="John D.">
+                    <div>
+                        <h4>John D.</h4>
+                        <p>Web Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="request-access" class="request-section" data-aos="fade-up">
+        <h2>Start Your Learning Journey</h2>
         <form id="access-form" class="access-form">
             <div class="form-group">
                 <input type="email" id="email" required placeholder="Your Email">
             </div>
             <div class="form-group">
-                <textarea id="reason" required placeholder="Why do you want to join COURSEME?"></textarea>
+                <textarea id="reason" required placeholder="What would you like to learn?"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Request Access</button>
+            <button type="submit" class="submit-btn">
+                <span>Request Access</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </form>
     </section>
 
@@ -83,7 +207,52 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Add number counter animation
+        const stats = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const finalValue = parseInt(target.textContent);
+                    animateValue(target, 0, finalValue, 2000);
+                    observer.unobserve(target);
+                }
+            });
+        }, observerOptions);
+
+        stats.forEach(stat => observer.observe(stat));
+
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Add floating animation to preview cards
+        const cards = document.querySelectorAll('.course-preview-card');
+        cards.forEach((card, index) => {
+            card.style.animation = `float 3s ease-in-out ${index * 0.2}s infinite`;
+        });
+    </script>
 </body>
 </html>

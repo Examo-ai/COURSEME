@@ -144,117 +144,219 @@ const courses = [
     }
 ];
 
-const courseBackgrounds = {
-    "python-bg": "linear-gradient(to right, #ff7e5f, #feb47b)",
-    "js-bg": "linear-gradient(to right, #4facfe, #00f2fe)",
-    "html-css-bg": "linear-gradient(to right, #ff9a9e, #fad0c4)",
-    "java-bg": "linear-gradient(to right, #a1c4fd, #c2e9fb)",
-    "webdev-bg": "linear-gradient(to right, #667eea, #764ba2)",
-    "python-data-bg": "linear-gradient(to right, #43cea2, #185a9d)",
-    "js-frameworks-bg": "linear-gradient(to right, #ff9966, #ff5e62)",
-    "spanish-bg": "linear-gradient(to right, #fbc2eb, #a6c1ee)",
-    "french-bg": "linear-gradient(to right, #ff7e5f, #feb47b)",
-    "java-enterprise-bg": "linear-gradient(to right, #4facfe, #00f2fe)",
-    "css-animation-bg": "linear-gradient(to right, #ff9a9e, #fad0c4)",
-    "python-web-bg": "linear-gradient(to right, #a1c4fd, #c2e9fb)",
-    "german-bg": "linear-gradient(to right, #667eea, #764ba2)",
-    "responsive-bg": "linear-gradient(to right, #43cea2, #185a9d)"
+// Theme Management
+const userPreferences = {
+    theme: localStorage.getItem('theme') || 'light',
+    viewMode: localStorage.getItem('viewMode') || 'grid'
 };
 
-function updateCourseBackgrounds() {
-    document.querySelectorAll('.course-image').forEach(image => {
-        const courseId = image.dataset.courseId;
-        const background = courseBackgrounds[courseId];
-        if (background) {
-            image.style.background = background;
-        }
+// Initialize theme and interactions
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const courseCards = document.querySelectorAll('.course-card');
+    const logoutBtn = document.querySelector('.logout-btn');
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+
+    // Theme toggle with persistence
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateCourseBackgrounds();
+    });
+
+    // Course card animations and interactions
+    courseCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+        });
+
+        card.addEventListener('click', () => {
+            const courseUrl = card.getAttribute('data-course-url');
+            if (courseUrl) {
+                window.location.href = courseUrl;
+            }
+        });
+    });
+
+    // Logout functionality
+    logoutBtn?.addEventListener('click', () => {
+        const theme = localStorage.getItem('theme'); // Preserve theme
+        localStorage.clear();
+        localStorage.setItem('theme', theme);
+        window.location.href = '/pages/login.html';
+    });
+
+    // Check authentication
+    if (!localStorage.getItem('isLoggedIn')) {
+        window.location.href = '/pages/login.html';
+    }
+
+    // Initialize courses
+    initializeDashboard();
+});
+
+// Course rendering and management
+function initializeDashboard() {
+    const coursesGrid = document.querySelector('.courses-grid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const coursesCount = document.querySelector('.courses-count');
+    
+    // Apply saved view mode
+    coursesGrid.classList.toggle('list-view', userPreferences.viewMode === 'list');
+    document.querySelector(`[data-view="${userPreferences.viewMode}"]`).classList.add('active');
+
+    // Render all courses initially
+    renderCourses(courses);
+    updateCoursesCount(courses.length);
+
+    // Filter functionality
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tag = btn.dataset.tag;
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filteredCourses = tag === 'all' 
+                ? courses 
+                : courses.filter(course => course.tags.includes(tag));
+
+            renderCourses(filteredCourses);
+            updateCoursesCount(filteredCourses.length);
+        });
+    });
+
+    // View toggle functionality
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const view = btn.dataset.view;
+            viewButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            coursesGrid.classList.remove('grid-view', 'list-view');
+            coursesGrid.classList.add(`${view}-view`);
+            
+            userPreferences.viewMode = view;
+            localStorage.setItem('viewMode', view);
+        });
     });
 }
 
-// Function to create course card with CSS gradient background
-function createCourseCard(course) {
-    const courseImageClass = course.image.replace('../images/', '').replace('.jpg', '');
-    return `
-        <div class="course-card">
-            <div class="course-image" data-course-id="${courseImageClass}" style="background: ${courseBackgrounds[courseImageClass]}"></div>
+function renderCourses(coursesToRender) {
+    const coursesGrid = document.querySelector('.courses-grid');
+    coursesGrid.innerHTML = '';
+
+    coursesToRender.forEach((course, index) => {
+        const card = document.createElement('div');
+        card.className = 'course-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.setAttribute('data-course-url', `courses/${course.url}`);
+
+        const imageTheme = userPreferences.theme === 'dark' ? '-dark' : '-light';
+        
+        card.innerHTML = `
+            <div class="course-image" style="background-image: url('../images/${course.background}${imageTheme}.png')">
+                <div class="course-overlay">
+                    <span class="course-duration">
+                        <i class="fas fa-clock"></i>
+                        ${course.duration}
+                    </span>
+                </div>
+            </div>
             <div class="course-content">
                 <div class="course-tags">
-                    ${course.tags.map(tag => `<span class="course-tag">${tag}</span>`).join('')}
+                    ${course.tags.map(tag => `
+                        <span class="course-tag">${tag}</span>
+                    `).join('')}
                 </div>
                 <h3 class="course-title">${course.title}</h3>
                 <p class="course-description">${course.description}</p>
                 <div class="course-footer">
                     <div class="course-stats">
-                        <span><i class="far fa-clock"></i> ${course.duration}</span>
-                        <span><i class="far fa-list-alt"></i> ${course.lessons} lessons</span>
+                        <span><i class="fas fa-users"></i> ${course.enrolled}</span>
+                        <span><i class="fas fa-star"></i> ${course.rating}</span>
                     </div>
-                    <a href="${course.url}" class="start-course-btn">Start Course</a>
+                    <button class="start-course-btn" onclick="startCourse('${course.id}')">
+                        <span>Start Learning</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
-        </div>
-    `;
+        `;
+
+        coursesGrid.appendChild(card);
+    });
 }
 
-// Function to filter courses
-function filterCourses(tag) {
-    const coursesGrid = document.getElementById('courses-grid');
-    coursesGrid.innerHTML = '';
+function updateCourseBackgrounds() {
+    const courseCards = document.querySelectorAll('.course-image');
+    const imageTheme = userPreferences.theme === 'dark' ? '-dark' : '-light';
     
-    const filteredCourses = tag === 'all' 
-        ? courses 
-        : courses.filter(course => course.tags.includes(tag));
-    
-    filteredCourses.forEach(course => {
-        coursesGrid.innerHTML += createCourseCard(course);
+    courseCards.forEach(card => {
+        const currentBg = card.style.backgroundImage;
+        card.style.backgroundImage = currentBg.replace(/-(?:light|dark)\.png/, `${imageTheme}.png`);
     });
-    updateCourseBackgrounds();
 }
 
-// Initialize courses
-filterCourses('all');
+function updateCoursesCount(count) {
+    const coursesCount = document.querySelector('.courses-count');
+    coursesCount.textContent = `${count} course${count !== 1 ? 's' : ''} available`;
+}
 
-// Add event listeners to tag buttons
-document.querySelectorAll('.tag-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        // Update active state
-        document.querySelector('.tag-btn.active').classList.remove('active');
-        button.classList.add('active');
-        
-        // Filter courses
-        filterCourses(button.dataset.tag);
+function startCourse(courseId) {
+    const course = courses.find(c => c.id === courseId);
+    if (course) {
+        window.location.href = `courses/${course.url}`;
+    }
+}
+
+// User menu functionality
+const userButton = document.querySelector('.user-button');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+if (userButton && dropdownMenu) {
+    userButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('show');
     });
-});
 
-// Enhanced search functionality with debouncing
-const searchInput = document.querySelector('.nav-search input');
-let searchTimeout;
-
-searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-        const searchTerm = e.target.value.toLowerCase();
-        const coursesGrid = document.getElementById('courses-grid');
-        coursesGrid.innerHTML = '';
-        
-        const filteredCourses = courses.filter(course => 
-            course.title.toLowerCase().includes(searchTerm) || 
-            course.description.toLowerCase().includes(searchTerm) ||
-            course.tags.some(tag => tag.toLowerCase().includes(searchTerm))
-        );
-        
-        if (filteredCourses.length === 0) {
-            coursesGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>No courses found</h3>
-                    <p>Try different keywords or browse all courses</p>
-                </div>
-            `;
-        } else {
-            filteredCourses.forEach(course => {
-                coursesGrid.innerHTML += createCourseCard(course);
-            });
-            updateCourseBackgrounds();
+    document.addEventListener('click', (e) => {
+        if (!dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
         }
-    }, 300); // Debounce time: 300ms
-});
+    });
+}
+
+// Handle progress stats
+function updateProgressStats() {
+    const activeCourses = courses.filter(course => 
+        localStorage.getItem(`progress_${course.id}`)
+    ).length;
+
+    const totalHours = courses.reduce((acc, course) => {
+        const progress = localStorage.getItem(`progress_${course.id}`);
+        if (progress) {
+            const hoursCompleted = (course.duration.split('h')[0] * (progress / 100));
+            return acc + hoursCompleted;
+        }
+        return acc;
+    }, 0);
+
+    document.querySelector('.courses-count').textContent = activeCourses;
+    document.querySelector('.learning-hours').textContent = totalHours.toFixed(1);
+}
+
+// Initialize progress stats
+updateProgressStats();

@@ -15,7 +15,70 @@ const courseBackgrounds = {
     'responsive-bg': 'linear-gradient(135deg, #16BFFD, #CB3066)'
 };
 
+const featuredCourses = [
+    {
+        "id": "js-advanced",
+        "title": "Advanced JavaScript",
+        "description": "Master modern JavaScript features and frameworks",
+        "featured": true,
+        "icon": "fab fa-js",
+        "tags": ["Programming", "Web Dev"],
+        "duration": "8 weeks",
+        "level": "Advanced",
+        "rating": 4.9,
+        "students": 1250
+    },
+    {
+        "id": "german-course",
+        "title": "German Language",
+        "description": "Learn German from basics to fluency",
+        "featured": true,
+        "icon": "fas fa-globe-europe",
+        "tags": ["Language", "Beginner"],
+        "duration": "12 weeks",
+        "level": "Beginner",
+        "rating": 4.8,
+        "students": 980
+    },
+    {
+        "id": "python-data",
+        "title": "Python Data Science",
+        "description": "Analyze data and build ML models",
+        "featured": true,
+        "icon": "fab fa-python",
+        "tags": ["Data Science", "Python"],
+        "duration": "10 weeks",
+        "level": "Intermediate",
+        "rating": 4.9,
+        "students": 1500
+    },
+    {
+        "id": "web-dev",
+        "title": "Web Development Bootcamp",
+        "description": "Complete web development from scratch",
+        "featured": true,
+        "icon": "fas fa-code",
+        "tags": ["Web Dev", "Full Stack"],
+        "duration": "16 weeks",
+        "level": "Beginner",
+        "rating": 4.7,
+        "students": 2100
+    },
+    {
+        "id": "spanish-course",
+        "title": "Spanish for Beginners",
+        "description": "Start your Spanish learning journey",
+        "featured": false,
+        "icon": "fas fa-language",
+        "tags": ["Language", "Beginner"],
+        "duration": "8 weeks",
+        "level": "Beginner",
+        "rating": 4.6,
+        "students": 750
+    }
+];
+
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = courseBackgrounds;
+    module.exports = { courseBackgrounds, featuredCourses };
 }

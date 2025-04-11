@@ -1,98 +1,113 @@
-// Initialize EmailJS
-(function() {
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-})();
+// Auth state management
+const AUTH_KEY = 'courseme_auth';
+const THEME_KEY = 'theme';
 
-// Valid access codes (including our default code)
-const validCodes = ['12345678'];
+// Initialize theme
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const themeToggle = document.querySelector('.theme-toggle');
+const icon = themeToggle.querySelector('i');
 
-// Check if user is authenticated
-function checkAuth() {
-    const isAuthenticated = sessionStorage.getItem('authenticated');
-    if (!isAuthenticated && !window.location.href.includes('index.html') && !window.location.href.includes('login.html')) {
-        window.location.href = '../login.html';
+function initializeTheme() {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme) {
+        document.body.classList.add(savedTheme);
+        updateThemeIcon(savedTheme === 'dark-theme');
+    } else {
+        const isDark = prefersDarkScheme.matches;
+        document.body.classList.add(isDark ? 'dark-theme' : 'light-theme');
+        updateThemeIcon(isDark);
     }
 }
 
-// Handle login
-function login(accessCode) {
-    if (validCodes.includes(accessCode)) {
-        sessionStorage.setItem('authenticated', 'true');
-        window.location.href = 'dashboard.html';
-        return true;
-    }
-    return false;
+function updateThemeIcon(isDark) {
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-// Handle logout
-function logout() {
-    sessionStorage.removeItem('authenticated');
-    window.location.href = '../index.html';
-}
+themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark-theme');
+    document.body.classList.remove(isDark ? 'dark-theme' : 'light-theme');
+    document.body.classList.add(isDark ? 'light-theme' : 'dark-theme');
+    localStorage.setItem(THEME_KEY, isDark ? 'light-theme' : 'dark-theme');
+    updateThemeIcon(!isDark);
+});
 
-// Generate random access code
-function generateAccessCode() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let code = '';
-    for (let i = 0; i < 8; i++) {
-        code += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return code;
-}
+// Login handling
+const loginForm = document.getElementById('loginForm');
+const passwordInput = document.getElementById('password');
+const errorMessage = document.querySelector('.error-message');
+const submitBtn = loginForm.querySelector('.submit-btn');
+const spinner = submitBtn.querySelector('.fa-spinner');
+const btnText = submitBtn.querySelector('span');
 
-// Handle access request
-async function handleAccessRequest(email, reason) {
-    const accessCode = generateAccessCode();
-    validCodes.push(accessCode); // In a real app, this would be stored in a database
+async function handleLogin(e) {
+    e.preventDefault();
+    const password = passwordInput.value.trim();
+    
+    // Show loading state
+    spinner.style.display = 'inline-block';
+    btnText.textContent = 'Signing in...';
+    submitBtn.disabled = true;
+    errorMessage.style.display = 'none';
 
     try {
-        const templateParams = {
-            to_email: email,
-            access_code: accessCode,
-            message: `Your access code for COURSEME is: ${accessCode}\n\nYou can now log in to access your courses.`
-        };
-
-        await emailjs.send(
-            'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-            'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-            templateParams
-        );
-
-        return true;
+        // Simulated API call delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Replace this with your actual password verification logic
+        if (password === 'demo123') { // This is just for demonstration
+            localStorage.setItem(AUTH_KEY, JSON.stringify({ isAuthenticated: true }));
+            window.location.href = 'dashboard.html';
+        } else {
+            throw new Error('Invalid password');
+        }
     } catch (error) {
-        console.error('Failed to send email:', error);
-        return false;
+        errorMessage.style.display = 'block';
+        loginForm.classList.add('shake');
+        
+        // Remove shake class after animation
+        setTimeout(() => {
+            loginForm.classList.remove('shake');
+        }, 500);
+        
+        passwordInput.value = '';
+        passwordInput.focus();
+    } finally {
+        // Reset button state
+        spinner.style.display = 'none';
+        btnText.textContent = 'Sign In';
+        submitBtn.disabled = false;
     }
 }
 
-// Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    const accessForm = document.getElementById('access-form');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const accessCode = document.getElementById('access-code').value;
-            if (!login(accessCode)) {
-                alert('Invalid access code. Please try again.');
-            }
-        });
+// Check if user is already authenticated
+function checkAuth() {
+    const auth = localStorage.getItem(AUTH_KEY);
+    if (!auth) {
+        if (!window.location.pathname.includes('login.html')) {
+            window.location.href = 'login.html';
+        }
+        return false;
     }
+    const isAuthenticated = JSON.parse(auth).isAuthenticated;
+    if (isAuthenticated && !window.location.pathname.includes('dashboard.html')) {
+        window.location.href = 'dashboard.html';
+    }
+    return isAuthenticated;
+}
 
-    if (accessForm) {
-        accessForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const reason = document.getElementById('reason').value;
+// Event listeners
+loginForm.addEventListener('submit', handleLogin);
+document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    checkAuth();
+});
 
-            const success = await handleAccessRequest(email, reason);
-            if (success) {
-                alert('Access code has been sent to your email!');
-                accessForm.reset();
-            } else {
-                alert('Failed to process your request. Please try again.');
-            }
-        });
+// Handle system theme changes
+prefersDarkScheme.addEventListener('change', (e) => {
+    if (!localStorage.getItem(THEME_KEY)) {
+        const isDark = e.matches;
+        document.body.classList.remove(isDark ? 'light-theme' : 'dark-theme');
+        document.body.classList.add(isDark ? 'dark-theme' : 'light-theme');
+        updateThemeIcon(isDark);
     }
 });

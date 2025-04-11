@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/course.css">
+    <link rel="stylesheet" href="../../css/german-course.css">
 </head>
-<body class="course-page">
+<body class="german-course">
     <nav class="course-nav">
         <div class="nav-left">
             <a href="../dashboard.html" class="back-link">
@@ -26,114 +26,98 @@
         </div>
     </nav>
 
-    <div class="course-container">
-        <aside class="course-sidebar">
-            <div class="course-info">
-                <div class="course-stats">
-                    <div class="stat-item">
-                        <i class="far fa-clock"></i>
-                        <span>12 hours</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="far fa-list-alt"></i>
-                        <span>24 lessons</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-tag"></i>
-                        <span>Language</span>
-                    </div>
-                </div>
-                <div class="progress-section">
-                    <h3>Course Progress</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 0%"></div>
-                    </div>
-                    <span class="progress-text">0% Complete</span>
-                </div>
-            </div>
-            <div class="lessons-list">
-                <h3>Course Content</h3>
-                <div class="lesson-item">
-                    <span class="lesson-number">1</span>
-                    <span class="lesson-title">German Pronunciation</span>
-                    <span class="lesson-duration">45 min</span>
-                </div>
-                <div class="lesson-item">
-                    <span class="lesson-number">2</span>
-                    <span class="lesson-title">Basic Grammar</span>
-                    <span class="lesson-duration">1 hour</span>
-                </div>
-                <div class="lesson-item">
-                    <span class="lesson-number">3</span>
-                    <span class="lesson-title">Essential Phrases</span>
-                    <span class="lesson-duration">1 hour</span>
-                </div>
-            </div>
-        </aside>
+    <header class="german-header">
+        <h1>Learn German with Confidence</h1>
+        <p>Master the German language through interactive lessons, real-world practice, and cultural immersion</p>
+    </header>
 
-        <main class="course-content">
-            <div class="content-section">
-                <h2>Course Overview</h2>
-                <p>Begin your journey to learn German with our comprehensive language course. Master pronunciation, essential vocabulary, and basic grammar through interactive lessons and practical exercises focused on real-world communication.</p>
-                
-                <h3>What You'll Learn</h3>
-                <ul class="learning-objectives">
-                    <li>German pronunciation rules</li>
-                    <li>Essential vocabulary and expressions</li>
-                    <li>Basic grammar structures</li>
-                    <li>Numbers and counting</li>
-                    <li>Daily conversations</li>
-                    <li>German culture and customs</li>
+    <div class="german-container">
+        <section class="german-section">
+            <h2>Essential Vocabulary</h2>
+            <ul class="vocab-list">
+                <li class="vocab-item">
+                    <span>Guten Tag</span>
+                    <span>Good day / Hello</span>
+                </li>
+                <li class="vocab-item">
+                    <span>Danke schön</span>
+                    <span>Thank you very much</span>
+                </li>
+                <li class="vocab-item">
+                    <span>Auf Wiedersehen</span>
+                    <span>Goodbye</span>
+                </li>
+                <li class="vocab-item">
+                    <span>Bitte</span>
+                    <span>Please / You're welcome</span>
+                </li>
+            </ul>
+            <button class="practice-btn">
+                <span>Practice Vocabulary</span>
+            </button>
+        </section>
+
+        <section class="german-section">
+            <h2>Grammar Basics</h2>
+            <ul class="grammar-list">
+                <li class="grammar-item">
+                    <span>Der, Die, Das</span>
+                    <span>Articles & Gender</span>
+                </li>
+                <li class="grammar-item">
+                    <span>Verb Conjugation</span>
+                    <span>Present Tense</span>
+                </li>
+                <li class="grammar-item">
+                    <span>Sentence Structure</span>
+                    <span>Word Order</span>
+                </li>
+            </ul>
+            <div class="progress-section">
+                <h3>Grammar Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 25%"></div>
+                </div>
+                <span>25% Complete</span>
+            </div>
+        </section>
+
+        <section class="german-section">
+            <h2>Cultural Insights</h2>
+            <div class="culture-content">
+                <p>Learn about German customs, traditions, and daily life while mastering the language. Our course includes:</p>
+                <ul class="culture-list">
+                    <li>German festivals and celebrations</li>
+                    <li>Business etiquette</li>
+                    <li>Regional differences</li>
+                    <li>Contemporary German society</li>
                 </ul>
-
-                <h3>Prerequisites</h3>
-                <ul class="prerequisites">
-                    <li>No prior German knowledge required</li>
-                    <li>Commitment to regular practice</li>
-                    <li>Interest in German culture</li>
-                </ul>
-
-                <div class="cta-section">
-                    <button class="start-learning-btn">Start Learning</button>
-                    <button class="download-resources-btn">
-                        <i class="fas fa-download"></i>
-                        Download Resources
-                    </button>
-                </div>
+                <button class="practice-btn">
+                    <span>Explore German Culture</span>
+                </button>
             </div>
-
-            <div class="content-section">
-                <h2>Course Structure</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h4>Week 1</h4>
-                            <p>Pronunciation and basic vocabulary</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h4>Week 2</h4>
-                            <p>Grammar fundamentals and sentence structure</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h4>Week 3</h4>
-                            <p>Practical conversations and culture</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        </section>
     </div>
 
     <script src="../../js/auth.js"></script>
     <script>
         checkAuth();
         
-        document.querySelector('.start-learning-btn').addEventListener('click', () => {
-            alert('Starting first lesson...');
+        document.querySelectorAll('.practice-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const action = btn.querySelector('span').textContent;
+                alert(`Starting: ${action}`);
+            });
+        });
+
+        // Add hover effect to vocabulary items
+        document.querySelectorAll('.vocab-item, .grammar-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'scale(1.02)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
         });
     </script>
 </body>

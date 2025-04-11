@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - COURSEME</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login - CourseMe</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="login-page">
+<body>
     <div class="login-container">
-        <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
-        <div class="login-card">
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <div class="login-form">
             <div class="login-header">
-                <h2>Welcome Back</h2>
-                <p>Enter your access code to continue</p>
-            </div>
-            <form id="login-form" class="login-form">
-                <div class="form-group">
-                    <label for="access-code">Access Code</label>
-                    <input type="password" id="access-code" required placeholder="Enter your 8-digit access code">
+                <div class="logo-container">
+                    <img src="../images/logo.png" alt="CourseMe Logo" class="logo-image">
                 </div>
-                <button type="submit" class="login-btn">Login</button>
-            </form>
-            <div class="login-footer">
-                <p>Don't have an access code? <a href="../index.html#request-access">Request Access</a></p>
+                <h1 class="login-title">Welcome Back</h1>
+                <p class="login-subtitle">Sign in to continue to CourseMe</p>
             </div>
+
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Invalid password. Please try again.</span>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Sign In</span>
+                    <i class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>
+            </form>
         </div>
     </div>
+
     <script src="../js/auth.js"></script>
 </body>
 </html>
