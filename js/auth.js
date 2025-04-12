@@ -53,8 +53,7 @@ async function handleLogin(e) {
         // Simulated API call delay
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Replace this with your actual password verification logic
-        if (password === 'demo123') { // This is just for demonstration
+        if (password === '12345678') { // Changed password here
             localStorage.setItem(AUTH_KEY, JSON.stringify({ isAuthenticated: true }));
             window.location.href = 'dashboard.html';
         } else {
